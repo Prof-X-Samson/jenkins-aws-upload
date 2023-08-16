@@ -22,8 +22,7 @@ pipeline {
               steps {
                   withAWS(region:'us-east-1',credentials:'ec2-user') {
                   sh 'echo "Uploading content with AWS creds"'
-                      // s3Upload(pathStyleAccessEnabled: true, payloadSigningEnabled: true, file:'app.py', bucket:'jenkins-s3-bucket-softrams-test')
-                  sh 'aws s3 cp test.zip s3://'jenkins-s3-bucket-softrams-test'/ '
+                      s3Upload(pathStyleAccessEnabled: true, payloadSigningEnabled: true, file:'test.zip', bucket:'jenkins-s3-bucket-softrams-test')
                   }
               }
          }
