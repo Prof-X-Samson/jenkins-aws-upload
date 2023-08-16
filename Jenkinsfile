@@ -65,9 +65,16 @@ pipeline {
         }
     }
     post {
-        cleanup {
-            script {
-                 echo ' working '
+         always {
+            cleanWs()
+            dir("${env.WORKSPACE}@tmp") {
+              deleteDir()
+            }
+            dir("${env.WORKSPACE}@script") {
+              deleteDir()
+            }
+            dir("${env.WORKSPACE}@script@tmp") {
+              deleteDir()
             }
         }
         }
