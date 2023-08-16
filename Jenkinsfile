@@ -26,19 +26,27 @@ pipeline {
                   }
               }
      }
-     post {
-        always {
-            cleanWs()
-            dir("${env.WORKSPACE}@tmp") {
-              deleteDir()
-            }
-            dir("${env.WORKSPACE}@script") {
-              deleteDir()
-            }
-            dir("${env.WORKSPACE}@script@tmp") {
-              deleteDir()
+                post {
+                  cleanup {
+                     echo "This block always runs after other conditions are evaluated."
+                     script {
+                         sh "rm -f ${FILE_PATH}"
             }
         }
-    }
+        }
+    //  post {
+    //     always {
+    //         cleanWs()
+    //         dir("${env.WORKSPACE}@tmp") {
+    //           deleteDir()
+    //         }
+    //         dir("${env.WORKSPACE}@script") {
+    //           deleteDir()
+    //         }
+    //         dir("${env.WORKSPACE}@script@tmp") {
+    //           deleteDir()
+    //         }
+    //     }
+    // }
      }
 }
