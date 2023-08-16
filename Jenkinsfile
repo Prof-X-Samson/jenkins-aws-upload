@@ -26,12 +26,6 @@ pipeline {
                   }
               }
          }
-     post {
-        always {
-            script {
-                sh "rm -f test.py"
-            }
-        }
-    }  
+     
      }
 }
