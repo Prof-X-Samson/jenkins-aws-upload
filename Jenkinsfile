@@ -14,7 +14,7 @@ pipeline {
              steps {
                  sh 'echo "Hello World"'
                  sh '''
-                      fallocate -l 5342880000 test.zip 
+                      fallocate -l 5342880000 test.py 
                  '''
              }
          }  
@@ -22,7 +22,7 @@ pipeline {
               steps {
                   withAWS(region:'us-east-1',credentials:'ec2-user') {
                   sh 'echo "Uploading content with AWS creds"'
-                      s3Upload(pathStyleAccessEnabled: true, payloadSigningEnabled: true, file:'test.zip', bucket:'jenkins-s3-bucket-softrams-test')
+                      s3Upload(pathStyleAccessEnabled: true, payloadSigningEnabled: true, file:'test.py', bucket:'jenkins-s3-bucket-softrams-test')
                   }
               }
          }
