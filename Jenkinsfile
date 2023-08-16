@@ -25,7 +25,7 @@ pipeline {
                       s3Upload(pathStyleAccessEnabled: true, payloadSigningEnabled: true, file:'test.py', bucket:'jenkins-s3-bucket-softrams-test')
                   }
               }
-         }
+     }
      post {
         always {
             cleanWs()
